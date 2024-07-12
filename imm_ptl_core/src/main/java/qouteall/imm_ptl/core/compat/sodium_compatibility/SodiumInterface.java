@@ -1,14 +1,12 @@
 package qouteall.imm_ptl.core.compat.sodium_compatibility;
 
-import me.jellysquid.mods.sodium.client.render.SodiumWorldRenderer;
-import me.jellysquid.mods.sodium.client.render.chunk.RenderSectionManager;
-import me.jellysquid.mods.sodium.client.render.chunk.map.ChunkStatus;
-import me.jellysquid.mods.sodium.client.render.chunk.map.ChunkTrackerHolder;
-import me.jellysquid.mods.sodium.client.render.texture.SpriteUtil;
-import me.jellysquid.mods.sodium.client.world.WorldRendererExtended;
+import net.caffeinemc.mods.sodium.client.render.SodiumWorldRenderer;
+import net.caffeinemc.mods.sodium.client.render.chunk.RenderSectionManager;
+import net.caffeinemc.mods.sodium.client.render.chunk.map.ChunkStatus;
+import net.caffeinemc.mods.sodium.client.render.chunk.map.ChunkTrackerHolder;
+import net.caffeinemc.mods.sodium.client.render.texture.SpriteUtil;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import org.jetbrains.annotations.Nullable;
@@ -62,8 +60,7 @@ public class SodiumInterface {
         
         @Override
         public void switchContextWithCurrentWorldRenderer(Object context) {
-            SodiumWorldRenderer swr =
-                ((WorldRendererExtended) Minecraft.getInstance().levelRenderer).sodium$getWorldRenderer();
+            SodiumWorldRenderer swr = SodiumWorldRenderer.instance();
             swr.scheduleTerrainUpdate();
             
             RenderSectionManager renderSectionManager =
